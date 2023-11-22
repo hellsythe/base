@@ -1,6 +1,5 @@
 {
     "name": "sdkconsultoria/core",
-    "version": "1.0.0",
     "type": "library",
     "description": "Funciones basicas y auxiliares, para generar una página web rápidamente",
     "keywords": [
