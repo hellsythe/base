@@ -28,4 +28,15 @@ class RoleTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user)->postJson('/api/v1/role', [])->assertStatus(403);
     }
+
+    public function test_create()
+    {
+        $user = User::factory()->create();
+        $user->givePermissionTo('role:create');
+        dd($user->hasPermissionTo('role:create'));
+
+        $this->actingAs($user)->postJson('/api/v1/role', [
+            'name' => $this->faker->name,
+        ])->dump()->assertStatus(201);
+    }
 }

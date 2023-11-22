@@ -2,12 +2,15 @@
 
 namespace Sdkconsultoria\Core\Policies;
 
-use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Sdkconsultoria\Core\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Str;
 
 abstract class BasicPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
@@ -29,6 +32,8 @@ abstract class BasicPolicy
      */
     public function create(User $user): bool
     {
+        dd($user->hasPermissionTo('role:create', 'web'));
+        //return true;
         return $this->validatePermission($user, 'create');
     }
 
@@ -66,7 +71,7 @@ abstract class BasicPolicy
 
     protected function validatePermission(User $user, string $permission)
     {
-        return $user->can($this->getModelName().':'.$permission);
+        return $user->can("{$this->getModelName()}:{$permission}");
     }
 
     protected function getModelName()
@@ -74,7 +79,8 @@ abstract class BasicPolicy
         return Str::snake($this->getName());
     }
 
-    private function getName() {
+    private function getName()
+    {
         $path = explode('\\', get_called_class());
         return str_replace('Policy', '', array_pop($path));
     }

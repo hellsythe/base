@@ -6,6 +6,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use Sdkconsultoria\Core\ServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 use Laravel\Sanctum\SanctumServiceProvider;
+use Sdkconsultoria\Core\Providers\AuthServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -47,6 +48,7 @@ abstract class TestCase extends Orchestra
             ServiceProvider::class,
             PermissionServiceProvider::class,
             SanctumServiceProvider::class,
+            AuthServiceProvider::class,
         ];
     }
 

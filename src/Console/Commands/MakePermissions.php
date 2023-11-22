@@ -124,14 +124,14 @@ class MakePermissions extends Command
 
     private function findPermissionOrCreate(string $model, string $permision): Permission
     {
-        return Permission::firstOrCreate(['name' => "{$model}:{$permision}"]);
+        return Permission::firstOrCreate(['name' => "{$model}:{$permision}", 'guard_name' => 'web']);
     }
 
     private function getDefaultPermissions(): array
     {
         return [
             'permission',
-            'rol',
+            'role',
         ];
     }
 }
