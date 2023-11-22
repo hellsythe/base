@@ -45,5 +45,8 @@
                 "Sdkconsultoria\\Core\\Providers\\AuthServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
