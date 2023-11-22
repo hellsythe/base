@@ -14,6 +14,7 @@
     <testsuite name="core">
       <directory suffix=".php">./tests/</directory>
       <exclude>./tests/TestCase.php</exclude>
+      <exclude>./tests/factories</exclude>
     </testsuite>
   </testsuites>
   <source>
