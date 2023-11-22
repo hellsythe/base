@@ -32,8 +32,6 @@ abstract class BasicPolicy
      */
     public function create(User $user): bool
     {
-        dd($user->hasPermissionTo('role:create', 'web'));
-        //return true;
         return $this->validatePermission($user, 'create');
     }
 

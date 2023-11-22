@@ -6,6 +6,7 @@ use Sdkconsultoria\Core\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Sdkconsultoria\Core\Tests\TestCase;
+use Spatie\Permission\Models\Permission;
 
 class RoleTest extends TestCase
 {
@@ -33,10 +34,9 @@ class RoleTest extends TestCase
     {
         $user = User::factory()->create();
         $user->givePermissionTo('role:create');
-        dd($user->hasPermissionTo('role:create'));
 
         $this->actingAs($user)->postJson('/api/v1/role', [
             'name' => $this->faker->name,
-        ])->dump()->assertStatus(201);
+        ])->assertStatus(201);
     }
 }

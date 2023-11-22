@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public const STATUS_ACTIVE = 30;
 
-    protected array $guard_name = ['api', 'web'];
+    protected array $guard_name = ['web'];
 
     protected function fields()
     {
