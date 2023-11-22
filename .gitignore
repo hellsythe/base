@@ -1,5 +1,4 @@
 vendor
-composer.lock
 html
 .phpunit.result.cache
 .phpunit.cache
