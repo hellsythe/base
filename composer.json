@@ -34,7 +34,8 @@
         "files": [],
         "psr-4": {
             "Sdkconsultoria\\Core\\": "src/",
-            "Sdkconsultoria\\Core\\Tests\\": "tests/"
+            "Sdkconsultoria\\Core\\Tests\\": "tests/",
+            "Database\\Factories\\Sdkconsultoria\\Core\\Models\\": "tests/factories/"
         }
     },
     "extra": {

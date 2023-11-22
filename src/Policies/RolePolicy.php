@@ -3,8 +3,8 @@
 namespace Sdkconsultoria\Core\Policies;
 
 use Sdkconsultoria\Core\Models\Role;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Sdkconsultoria\Core\Models\User;
 
 class RolePolicy
 {

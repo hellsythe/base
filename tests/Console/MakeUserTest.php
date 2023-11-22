@@ -1,9 +1,10 @@
 <?php
 
-namespace Sdkconsultoria\Core\Tests;
+namespace Sdkconsultoria\Core\Tests\Console;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
+use Sdkconsultoria\Core\Tests\TestCase;
 
 class MakeUserTest extends TestCase
 {
