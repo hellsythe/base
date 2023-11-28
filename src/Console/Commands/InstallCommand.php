@@ -2,10 +2,10 @@
 
 namespace Sdkconsultoria\Core\Console\Commands;
 
+use Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Sdkconsultoria\Core\Service\FileManager;
-use Artisan;
 
 class InstallCommand extends Command
 {

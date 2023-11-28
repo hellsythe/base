@@ -2,10 +2,11 @@
 
 namespace Sdkconsultoria\Core\Models\Traits;
 
+use Date;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Str;
 use Sdkconsultoria\Core\Exceptions\APIException;
-use Date;
+
 trait Model
 {
     public static $keyId = 'id';
@@ -100,7 +101,7 @@ trait Model
     public function getLabels(): array
     {
         $labels = [];
-        foreach ($this->getFields()  as $field) {
+        foreach ($this->getFields() as $field) {
             $labels[$field['name']] = $field['label'];
         }
 
@@ -110,7 +111,7 @@ trait Model
     public function getFilters(): array
     {
         $filters = [];
-        foreach ($this->getFields()  as $field) {
+        foreach ($this->getFields() as $field) {
             if ($field['searchable']) {
                 $filters[] = $field['filter'];
             }
@@ -261,6 +262,6 @@ trait Model
 
     public function getCreatedAtAttribute($value): string
     {
-        return  Date::createFromDate($value)->setTimezone('America/Mexico_city')->format('l j F Y \a \l\a\s H:i');
+        return Date::createFromDate($value)->setTimezone('America/Mexico_city')->format('l j F Y \a \l\a\s H:i');
     }
 }

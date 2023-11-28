@@ -2,12 +2,11 @@
 
 namespace Sdkconsultoria\Core\Tests\Api;
 
-use Sdkconsultoria\Core\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use Sdkconsultoria\Core\Models\Role;
+use Sdkconsultoria\Core\Models\User;
 use Sdkconsultoria\Core\Tests\TestCase;
-use Spatie\Permission\Models\Permission;
 
 class RoleTest extends TestCase
 {
@@ -39,7 +38,7 @@ class RoleTest extends TestCase
         Role::create(['name' => $this->faker->name]);
         Role::create(['name' => $this->faker->name]);
 
-        $this->actingAs($user)->get("/api/v1/role")->assertStatus(200)->assertJsonStructure([
+        $this->actingAs($user)->get('/api/v1/role')->assertStatus(200)->assertJsonStructure([
             'data' => [
                 [
                     'id',
@@ -47,7 +46,7 @@ class RoleTest extends TestCase
                     'created_at',
                     'updated_at',
                     'deleted_at',
-                ]
+                ],
             ],
         ])->assertJsonCount(3, 'data');
     }

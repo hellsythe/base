@@ -3,9 +3,9 @@
 namespace Database\Factories\Sdkconsultoria\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Sdkconsultoria\Core\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Sdkconsultoria\Core\Models\User;
 
 class UserFactory extends Factory
 {

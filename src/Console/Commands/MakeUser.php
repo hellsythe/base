@@ -32,7 +32,7 @@ class MakeUser extends Command
 
         $token = $this->option('token');
         if ($token) {
-            $this->info('token: ' . $user->createToken('token')->plainTextToken);
+            $this->info('token: '.$user->createToken('token')->plainTextToken);
         }
 
         return 0;

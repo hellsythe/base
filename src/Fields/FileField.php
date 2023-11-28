@@ -7,12 +7,14 @@ class FileField extends Field
     public $component = 'FileField';
 
     protected $disk = '';
+
     protected $folder = 'media';
 
     public function setDisk(string $folder, string $disk = 'public'): self
     {
         $this->folder = $folder;
         $this->disk = $disk;
+
         return $this;
     }
 
@@ -20,7 +22,7 @@ class FileField extends Field
     {
         return array_merge([
             'folder' => $this->folder,
-            'disk' => $this->disk
+            'disk' => $this->disk,
         ], parent::getField());
     }
 }

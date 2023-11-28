@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Storage;
  */
 trait ApiControllerTrait
 {
-    use SearchableTrait;
     use OrderableTrait;
     use PaginationTrait;
+    use SearchableTrait;
 
     protected function customFilters($query, $request)
     {
@@ -86,9 +86,9 @@ trait ApiControllerTrait
             if ($field['component'] == 'FileField') {
                 $file = $request->file($field['name']);
                 if ($file) {
-                    Storage::disk($field['disk'])->putFileAs($field['folder'], $file, $model->id . '.' . $file->getClientOriginalExtension());
+                    Storage::disk($field['disk'])->putFileAs($field['folder'], $file, $model->id.'.'.$file->getClientOriginalExtension());
 
-                    $model->{$field['name']} = Storage::disk($field['disk'])->url($field['folder'] . $model->id . '.' . $file->getClientOriginalExtension());
+                    $model->{$field['name']} = Storage::disk($field['disk'])->url($field['folder'].$model->id.'.'.$file->getClientOriginalExtension());
                     $model->save();
                 }
             }

@@ -14,8 +14,8 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
-    use Notifiable;
     use HasRoles;
+    use Notifiable;
     use TraitBaseModel;
 
     public const DEFAULT_SEARCH = 'like';

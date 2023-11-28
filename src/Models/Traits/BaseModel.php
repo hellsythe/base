@@ -8,12 +8,12 @@ use Sdkconsultoria\Core\Models\Traits\Model as TraitBaseModel;
 
 trait BaseModel
 {
-    use HasFactory;
-    use TraitBaseModel;
-    use Field;
     use Authorize;
+    use Field;
+    use HasFactory;
     use LoadFromRequest;
-    use SoftDeletes;
-    use ValidateRequest;
     use Menu;
+    use SoftDeletes;
+    use TraitBaseModel;
+    use ValidateRequest;
 }

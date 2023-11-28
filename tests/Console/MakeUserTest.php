@@ -20,8 +20,8 @@ class MakeUserTest extends TestCase
     public function test_make_default()
     {
         $this->artisan('sdk:user')->assertSuccessful();
-        $this->assertDatabaseHas("users", [
-            "email" => "admin@sdkconsultoria.com"
+        $this->assertDatabaseHas('users', [
+            'email' => 'admin@sdkconsultoria.com',
         ]);
 
         $user = \Sdkconsultoria\Core\Models\User::where('email', 'admin@sdkconsultoria.com')->first();
@@ -32,8 +32,8 @@ class MakeUserTest extends TestCase
     {
         $email = $this->faker->email;
         $this->artisan('sdk:user', ['email' => $email])->assertSuccessful();
-        $this->assertDatabaseHas("users", [
-            "email" => $email
+        $this->assertDatabaseHas('users', [
+            'email' => $email,
         ]);
     }
 

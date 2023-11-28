@@ -93,7 +93,7 @@ trait SearchableTrait
     protected function searchModelsByRequest(Request $request, &$models)
     {
         foreach ($this->filters() as $index => $filter) {
-            if($request->$index) {
+            if ($request->$index) {
                 $models = $filter($models, $request->$index);
             }
         }

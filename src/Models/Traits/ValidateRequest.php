@@ -25,7 +25,8 @@ trait ValidateRequest
             $rules[$field['name']] = $field['rulesUpdate'];
         }
 
-        return $rules;    }
+        return $rules;
+    }
 
     public function validateRequest(Request $request, array $rules)
     {

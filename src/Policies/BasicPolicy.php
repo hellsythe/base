@@ -3,9 +3,8 @@
 namespace Sdkconsultoria\Core\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Sdkconsultoria\Core\Models\User;
-use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Str;
+use Sdkconsultoria\Core\Models\User;
 
 abstract class BasicPolicy
 {
@@ -80,6 +79,7 @@ abstract class BasicPolicy
     private function getName()
     {
         $path = explode('\\', get_called_class());
+
         return str_replace('Policy', '', array_pop($path));
     }
 }

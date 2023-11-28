@@ -67,7 +67,7 @@ class MakePermissions extends Command
 
         foreach ($this->folders() as $folder) {
             $this->info("Leyendo modelos desde $folder");
-            $this->readModelsFromPath($base_path . $folder, $models_files);
+            $this->readModelsFromPath($base_path.$folder, $models_files);
         }
 
         return $models_files;

@@ -2,11 +2,11 @@
 
 namespace Sdkconsultoria\Core\Tests;
 
+use Laravel\Sanctum\SanctumServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Sdkconsultoria\Core\Providers\AuthServiceProvider;
 use Sdkconsultoria\Core\ServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
-use Laravel\Sanctum\SanctumServiceProvider;
-use Sdkconsultoria\Core\Providers\AuthServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -18,7 +18,7 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
-        if (!self::$migration) {
+        if (! self::$migration) {
             $this->loadLaravelMigrations();
             $this->artisan('migrate')->run();
 
@@ -32,16 +32,16 @@ abstract class TestCase extends Orchestra
         $app['config']->set('auth.providers.users.model', '\Sdkconsultoria\Core\Models\User');
 
         $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
         $app['config']->set('logging.default', 'single');
         $app['config']->set('logging.channels.single', [
             'driver' => 'single',
             // 'tap' => [App\Logging\CustomizeFormatter::class],
-            'path' => __DIR__ . '/logs/test.log',
+            'path' => __DIR__.'/logs/test.log',
             'level' => 'debug',
         ]);
     }
