@@ -38,7 +38,7 @@ trait ApiControllerTrait
         $this->authorize('view', $model);
 
         return response()
-            ->json(['model' => $model->getAttributes()]);
+            ->json(['data' => $model->getAttributes()]);
     }
 
     public function storage(Request $request)

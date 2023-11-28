@@ -3,3 +3,4 @@ html
 .phpunit.result.cache
 .phpunit.cache
 tests/files
+tests/logs

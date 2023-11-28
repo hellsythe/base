@@ -36,6 +36,14 @@ abstract class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+
+        $app['config']->set('logging.default', 'single');
+        $app['config']->set('logging.channels.single', [
+            'driver' => 'single',
+            // 'tap' => [App\Logging\CustomizeFormatter::class],
+            'path' => __DIR__ . '/logs/test.log',
+            'level' => 'debug',
+        ]);
     }
 
     /**
