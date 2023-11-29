@@ -44,6 +44,8 @@ abstract class TestCase extends Orchestra
             'path' => __DIR__.'/logs/test.log',
             'level' => 'debug',
         ]);
+
+        $app->singleton('Illuminate\Contracts\Debug\ExceptionHandler', 'Orchestra\Testbench\Exceptions\Handler');
     }
 
     /**
