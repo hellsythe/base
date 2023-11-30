@@ -45,7 +45,7 @@ abstract class TestCase extends Orchestra
             'level' => 'debug',
         ]);
 
-        $app->singleton('Illuminate\Contracts\Debug\ExceptionHandler', 'Orchestra\Testbench\Exceptions\Handler');
+        $app->singleton('Illuminate\Contracts\Debug\ExceptionHandler', 'Sdkconsultoria\Core\Exceptions\Handler');
     }
 
     /**

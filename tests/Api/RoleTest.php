@@ -69,7 +69,7 @@ class RoleTest extends TestCase
         $user = User::factory()->create();
         $user->givePermissionTo('role:create');
 
-        $this->actingAs($user)->postJson('/api/v1/role', [])->assertStatus(201);
+        $this->actingAs($user)->postJson('/api/v1/role', [])->assertStatus(400);
     }
 
     public function test_read()
@@ -119,12 +119,12 @@ class RoleTest extends TestCase
         $user = User::factory()->create();
         $user->givePermissionTo('role:viewAny');
         $name = $this->faker->name;
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $name]);
+        Role::create(['name' => $this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => $this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => $this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => $name, 'status' => Role::STATUS_ACTIVE]);
 
-        $this->actingAs($user)->get('/api/v1/role?name='.$name)
+        $this->actingAs($user)->get("/api/v1/role?name={$name}")
             ->assertStatus(200)
             ->assertJsonStructure([
                 'data' => [
@@ -144,25 +144,15 @@ class RoleTest extends TestCase
     {
         $user = User::factory()->create();
         $user->givePermissionTo('role:viewAny');
-        $name = $this->faker->name;
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $this->faker->name]);
-        Role::create(['name' => $name]);
+        Role::create(['name' => 'ya'.$this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => 'aa'.$this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => 'za'.$this->faker->name, 'status' => Role::STATUS_ACTIVE]);
+        Role::create(['name' => 'ba'.$this->faker->name, 'status' => Role::STATUS_ACTIVE]);
 
-        $this->actingAs($user)->get('/api/v1/role?name='.$name)
-            ->assertStatus(200)
-            ->assertJsonStructure([
-                'data' => [
-                    [
-                        'id',
-                        'name',
-                        'created_at',
-                        'updated_at',
-                        'deleted_at',
-                    ],
-                ],
-            ])
-            ->assertJsonCount(1, 'data');
+        $response_asc = $this->actingAs($user)->get('/api/v1/role?order=name')->assertStatus(200);
+        $response_desc = $this->actingAs($user)->get('/api/v1/role?order=-name')->assertStatus(200);
+
+        $this->assertStringStartsWith('aa', $response_asc['data'][0]['name']);
+        $this->assertStringStartsWith('za', $response_desc['data'][0]['name']);
     }
 }
