@@ -3,6 +3,7 @@
 namespace Sdkconsultoria\Core;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -18,6 +19,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->registerMigrations();
         $this->registerTranslations();
         $this->registerRoutes();
+        $this->registerAdminPermission();
     }
 
     private function registerCommands()
@@ -122,5 +124,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     private function registerRoutes()
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+    }
+
+    private function registerAdminPermission()
+    {
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole(['super-admin', 'admin']) ? true : null;
+        });
     }
 }
