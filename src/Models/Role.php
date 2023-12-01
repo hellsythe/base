@@ -10,20 +10,23 @@ class Role extends BaseRole
 {
     use TraitBaseModel;
 
-    public const DEFAULT_SEARCH = 'like';
-
-    public const STATUS_DELETED = 0;
-
-    public const STATUS_CREATION = 20;
-
-    public const STATUS_ACTIVE = 30;
-
     protected function fields()
     {
         return [
             TextField::make('name')
                 ->label('Nombre')
                 ->rules(['required']),
+        ];
+    }
+
+    public static function fieldsX(): array
+    {
+        return [
+            'name' => Field::make()
+                ->label('Nombre')
+                ->rules(['required']),
+            'guard' => Field::make()
+                ->label('Guard'),
         ];
     }
 
